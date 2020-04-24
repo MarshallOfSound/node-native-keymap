@@ -48,6 +48,14 @@ NativeBinding.prototype.isISOKeyboard = function(callback) {
     return false;
   }
 }
+NativeBinding.prototype.ignoreAllEvents = function() {
+  try {
+    this._init();
+    return this._keymapping.ignoreAllEvents();
+  } catch (err) {
+    return false;
+  }
+}
 
 var binding = new NativeBinding();
 
@@ -62,4 +70,7 @@ exports.onDidChangeKeyboardLayout = function(callback) {
 };
 exports.isISOKeyboard = function(callback) {
   return binding.isISOKeyboard(callback);
+};
+exports.ignoreAllEvents = function() {
+  return binding.ignoreAllEvents();
 };

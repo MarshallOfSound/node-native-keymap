@@ -426,6 +426,7 @@ namespace vscode_keyboard {
       /* [in] */ __RPC__in REFGUID guidProfile,
       /* [in] */ HKL hkl,
       /* [in] */ DWORD dwFlags) override {
+      if (ignore_events) return S_OK;
 
       napi_env env = data->env;
       napi_async_context context = data->context;

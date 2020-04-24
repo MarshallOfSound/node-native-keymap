@@ -16,6 +16,8 @@
 
 namespace vscode_keyboard {
 
+static bool ignore_events = false;
+
 // This structure is used to define the keycode mapping table.
 // It is defined here because the unittests need access to it.
 typedef struct {
@@ -39,6 +41,7 @@ napi_value _GetKeyMap(napi_env env, napi_callback_info info);
 napi_value _GetCurrentKeyboardLayout(napi_env env, napi_callback_info info);
 napi_value _OnDidChangeKeyboardLayout(napi_env env, napi_callback_info info);
 napi_value _isISOKeyboard(napi_env env, napi_callback_info info);
+napi_value _ignoreAllEvents(napi_env env, napi_callback_info info);
 
 napi_status napi_set_named_property_string_utf8(napi_env env, napi_value object, const char *utf8Name, const char *value);
 napi_value napi_fetch_null(napi_env env);

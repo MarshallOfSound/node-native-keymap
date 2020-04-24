@@ -18,6 +18,11 @@ napi_status napi_set_named_property_string_utf8(napi_env env, napi_value object,
   return napi_ok;
 }
 
+napi_value _ignoreAllEvents(napi_env env, napi_callback_info info) {
+  ignore_events = true;
+  return napi_fetch_undefined(env);
+}
+
 napi_value napi_fetch_null(napi_env env) {
   napi_value result;
   NAPI_CALL(env, napi_get_null(env, &result));
@@ -56,6 +61,11 @@ napi_value Init(napi_env env, napi_value exports) {
     napi_value isISOKeyboard;
     NAPI_CALL(env, napi_create_function(env, NULL, 0, _isISOKeyboard, NULL, &isISOKeyboard));
     NAPI_CALL(env, napi_set_named_property(env, exports, "isISOKeyboard", isISOKeyboard));
+  }
+  {
+    napi_value ignoreAllEvents;
+    NAPI_CALL(env, napi_create_function(env, NULL, 0, _ignoreAllEvents, NULL, &ignoreAllEvents));
+    NAPI_CALL(env, napi_set_named_property(env, exports, "ignoreAllEvents", ignoreAllEvents));
   }
 
   return exports;

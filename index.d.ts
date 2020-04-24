@@ -67,3 +67,5 @@ export function getCurrentKeyboardLayout(): IKeyboardLayoutInfo;
 export function onDidChangeKeyboardLayout(callback: () => void): void;
 
 export function isISOKeyboard(): boolean | undefined;
+
+export function ignoreAllEvents(): boolean | undefined;
