@@ -12,7 +12,6 @@
 #include <windows.h>
 #include <Msctf.h>
 #include <ime.h>
-#include <node.h>
 
 namespace {
 
